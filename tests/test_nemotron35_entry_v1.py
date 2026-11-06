@@ -381,3 +381,12 @@ def test_execute_without_key_makes_no_request(tmp_path, monkeypatch, capsys):
     assert model.requests == []
     record = json.loads((tmp_path / "out/execution/record.json").read_text(encoding="utf-8"))
     assert record["workflow_sessions"] == 0
+
+
+def test_sandbox_image_copies_execute_worker():
+    """샌드박스 이미지에서 --execute가 모델 호출 전에 FileNotFoundError로 멈추지 않도록 worker를 복사한다."""
+    worker = E.WORKER.relative_to(ROOT).as_posix()
+    copies = [line.split()[1:3] for line in (ROOT / "docker/Dockerfile.sandbox").read_text(encoding="utf-8").splitlines()
+              if line.startswith("COPY ") and "--from=" not in line]
+    assert [worker, f"/sandbox/app/{worker}"] in copies
+    assert not any(src.rstrip("/") == "evals" for src, _ in copies), "evals/ 전체를 샌드박스에 넣지 않는다"

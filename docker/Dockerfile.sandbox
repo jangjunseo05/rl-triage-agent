@@ -9,6 +9,9 @@ COPY pyproject.toml uv.lock README.md /sandbox/app/
 COPY src /sandbox/app/src
 COPY configs /sandbox/app/configs
 COPY tests /sandbox/app/tests
+# Nemotron 3.5 입구(src/rl_triage/nemotron35_entry_v1.py)의 --execute가 불러오는 실행 검증 모듈 하나만 넣는다.
+# evals/의 다른 파일(결과·정답 채점·실행기)은 샌드박스에 넣지 않는다.
+COPY evals/grounded_active_model_call.py /sandbox/app/evals/grounded_active_model_call.py
 RUN cd /sandbox/app && UV_PROJECT_ENVIRONMENT=/sandbox/app/.venv UV_PYTHON_DOWNLOADS=never \
     uv sync --frozen --python /usr/bin/python3.12 && chmod -R a+rX /sandbox/app
 ENV TRIAGE_WORKSPACE=/sandbox/workspace PATH=/sandbox/app/.venv/bin:$PATH PYTHONUTF8=1
