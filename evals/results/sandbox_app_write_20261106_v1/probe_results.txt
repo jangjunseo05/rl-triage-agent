@@ -1,0 +1,13 @@
+# 2026-11-06 20:28:05 KST 이미지 rl-triage-ws:seed42 (sha256:09c3eac1b9d566e573b6e116e9b9b482f2de94fd41654d4de7424b56205a039f), PROTOCOL.md(커밋 9f93cd8)
+## O
+$ openshell sandbox exec -n rl-triage -- python - < probe.py
+{"path": "/sandbox/app/src/rl_triage/triage_tools.py", "sha256_before": "c5a63aff9636d0c4c527cf32d52fd33e7014a6430c7e17ecd50f43634121a9af", "append": "denied", "exception": "PermissionError", "errno": "EACCES", "sha256_after": "c5a63aff9636d0c4c527cf32d52fd33e7014a6430c7e17ecd50f43634121a9af", "changed": false}
+# exit=0
+## D
+$ docker run --rm -i --user 1001:1001 rl-triage-ws:seed42 python - < probe.py
+{"path": "/sandbox/app/src/rl_triage/triage_tools.py", "sha256_before": "c5a63aff9636d0c4c527cf32d52fd33e7014a6430c7e17ecd50f43634121a9af", "append": "allowed", "sha256_after": "bc113e4143ec33f93eee4180b09d64b4bffebd8f64878eaedc6b75f62af1dfb8", "changed": true}
+# exit=0
+## D0
+$ docker run --rm --user 1001:1001 rl-triage-ws:seed42 python -c <triage_tools.py SHA-256>
+c5a63aff9636d0c4c527cf32d52fd33e7014a6430c7e17ecd50f43634121a9af
+# exit=0

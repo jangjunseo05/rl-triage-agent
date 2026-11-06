@@ -1,0 +1,3 @@
+# 2026-11-06 20:31:29 KST 유출 검색: 이 폴더 전체(이 파일 제외)
+$ grep -rIl -E "<패턴: nvapi- 키 접두어 | openshell:re 자리표시자 | Windows·WSL 사용자명 2개 | 192.168. 사설 IP | /home/<이름> 경로>" --exclude=leak_scan.txt .
+# matches=0

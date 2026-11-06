@@ -1,0 +1,13 @@
+$ bash scripts/sandbox_up.sh 42   # 2026-11-06 20:15:01 KST
+sha256:bb292e3dc986b2cc514c3a3515c7ffa0ca2f59806bf35cee17ebef1712f37409
+
+Created sandbox: rl-triage
+
+  [0.0s] Requesting compute...
+[0.0s] Sandbox allocated
+[0.0s] Pulling image rl-triage-ws:seed42
+[0.1s] Image already present
+[1.5s] Starting sandbox Container created
+10
+exit=0 elapsed=29s
+workspace image sha256:bb292e3dc986b2cc514c3a3515c7ffa0ca2f59806bf35cee17ebef1712f37409

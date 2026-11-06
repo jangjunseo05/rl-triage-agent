@@ -1,0 +1,78 @@
+{
+ "schema": "nemotron35_entry_nat_events_v1",
+ "workflow_execution_entered": true,
+ "events": [
+  {
+   "type": "LLM_START",
+   "id": "01a1b094-1eea-7383-a204-c664807949e1",
+   "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+   }
+  },
+  {
+   "type": "LLM_END",
+   "id": "01a1b094-1eea-7383-a204-c664807949e1",
+   "usage": {
+    "prompt_tokens": 2074,
+    "completion_tokens": 48,
+    "total_tokens": 2122
+   }
+  },
+  {
+   "type": "LLM_START",
+   "id": "01a1b094-2609-7aa0-83ff-7b183f3d7d6e",
+   "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+   }
+  },
+  {
+   "type": "LLM_END",
+   "id": "01a1b094-2609-7aa0-83ff-7b183f3d7d6e",
+   "usage": {
+    "prompt_tokens": 5869,
+    "completion_tokens": 1211,
+    "total_tokens": 7080
+   }
+  },
+  {
+   "type": "LLM_START",
+   "id": "01a1b094-456d-7fc3-957b-34ae8661df47",
+   "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+   }
+  },
+  {
+   "type": "LLM_END",
+   "id": "01a1b094-456d-7fc3-957b-34ae8661df47",
+   "usage": {
+    "prompt_tokens": 15676,
+    "completion_tokens": 368,
+    "total_tokens": 16044
+   }
+  },
+  {
+   "type": "LLM_START",
+   "id": "01a1b094-559f-79a2-b6f9-4c642f5692c9",
+   "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+   }
+  },
+  {
+   "type": "LLM_END",
+   "id": "01a1b094-559f-79a2-b6f9-4c642f5692c9",
+   "usage": {
+    "prompt_tokens": 19687,
+    "completion_tokens": 1517,
+    "total_tokens": 21204
+   }
+  }
+ ]
+}

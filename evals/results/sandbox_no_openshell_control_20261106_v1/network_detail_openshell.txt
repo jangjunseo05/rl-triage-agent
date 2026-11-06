@@ -1,0 +1,5 @@
+# 2026-11-06 19:57:54 KST 같은 검사 스크립트: openshell
+$ openshell sandbox exec -n rl-triage -- python -c <169.254.169.254:80 연결, https://huggingface.co 요청, /home 목록>
+metadata: PermissionError [Errno 13] Permission denied 0.0 s
+huggingface: URLError <urlopen error [Errno 13] Permission denied>
+listdir /home: PermissionError [Errno 13] Permission denied: '/home'

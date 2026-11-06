@@ -1,0 +1,5 @@
+# 2026-11-06 19:57:55 KST 같은 검사 스크립트: docker
+$ docker run --rm --user 1001:1001 rl-triage-ws:seed42 python -c <같은 스크립트>
+metadata: ConnectionRefusedError [Errno 111] Connection refused 0.0 s
+huggingface: HTTP 200
+listdir /home: ['ubuntu', 'sandbox']

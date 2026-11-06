@@ -1,0 +1,10 @@
+# 2026-11-06 20:16:24 KST 앱 코드 쓰기 확인. 이미지 파일 모드는 777(Windows 마운트에서 빌드)이다
+$ openshell sandbox exec -n rl-triage -- bash -c <stat + /sandbox/app/src/rl_triage/triage_tools.py 끝에 덧붙이기 시도>
+-rwxrwxrwx root /sandbox/app/src/rl_triage/triage_tools.py
+-rwxrwxrwx root /sandbox/app/evals/grounded_active_model_call.py
+app-write: denied
+bash: line 1: /sandbox/app/src/rl_triage/triage_tools.py: Permission denied
+$ docker run --rm --user 1001:1001 rl-triage-ws:seed42 bash -c <같은 명령>   # OpenShell 없음, 컨테이너는 --rm으로 버림
+-rwxrwxrwx root /sandbox/app/src/rl_triage/triage_tools.py
+-rwxrwxrwx root /sandbox/app/evals/grounded_active_model_call.py
+app-write: allowed

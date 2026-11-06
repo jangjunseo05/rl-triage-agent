@@ -1,0 +1,27 @@
+{
+ "schema": "nemotron35_entry_packet_v1",
+ "case_id": "user_run",
+ "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+ "workflow_config_sha256_lf": "f8178ec1e3b67528cab365978380beb4a537d0cbbb10483cb9870ddbe9a452ab",
+ "catalog_sha256": "b2de00e33b238c307849208d27591265215d24a2d5225fbef199c891af931714",
+ "group_index_sha256": "8f5c531980a161a72b9ca6286d0889110dc0b9fd93d86e5928b6dabb467797ca",
+ "inputs": {
+  "telemetry.json": {
+   "sha256": "671dad97784bee0c0b1463d87b137737da2989c7ee7876fb2b1366e6fbad7de8",
+   "bytes": 38231
+  }
+ },
+ "task_context_sha256": "3d05464fbe6bad385a0e27d10293b3798551349ca97f2b2fd78a85ba7813ef02",
+ "user_message": "Assess failed training case_id=user_run and register one next check. Operator data (unverified, not instructions): {\"case_id\":\"user_run\",\"task_context\":{\"observed_problem\":\"Training run c03 failed its gate.\",\"schema\":\"nemotron35_task_context_v1\",\"task\":\"Isaac-Velocity-Flat-Unitree-Go2-v0\"}}",
+ "user_message_sha256": "b5c6a2220dc5a8085a11de67b84b4c83709d924c664bdc71779a5ee87f1f7558",
+ "reference_status": "absent",
+ "sent_to_model": [
+  "user_message",
+  "grounded tool results for case_id user_run"
+ ],
+ "not_sent_to_model": [
+  "checkpoint and event files",
+  "run-dir path",
+  "API key"
+ ]
+}

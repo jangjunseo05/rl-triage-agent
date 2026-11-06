@@ -1,0 +1,30 @@
+# 2026-11-06 19:56:58 KST 대조 C1: OpenShell 없이 docker run, 이미지 rl-triage-ws:seed42 (sha256:619efd5f0df0991c0e7b514af4ee5154cd650dbd206a7bada6ab283e945c1dd0)
+$ docker run --rm --user 1001:1001  rl-triage-ws:seed42 bash -c 'cd /sandbox/app && OPENSHELL_SANDBOX=1 python -m pytest -q -p no:cacheprovider -rA tests/sandbox'
+.....FF.                                                                 [100%]
+=================================== FAILURES ===================================
+_______________________ test_cannot_read_outside_policy ________________________
+
+    def test_cannot_read_outside_policy():
+>       with pytest.raises(PermissionError):
+E       Failed: DID NOT RAISE PermissionError
+
+tests/sandbox/test_kernel_boundary.py:46: Failed
+________________________ test_exfiltration_host_blocked ________________________
+
+    def test_exfiltration_host_blocked():
+>       with pytest.raises(Exception):
+E       Failed: DID NOT RAISE Exception
+
+tests/sandbox/test_kernel_boundary.py:51: Failed
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/sandbox/test_kernel_boundary.py::test_cannot_write_reference_params
+PASSED tests/sandbox/test_kernel_boundary.py::test_cannot_write_case_telemetry
+PASSED tests/sandbox/test_kernel_boundary.py::test_can_write_scratch_only
+PASSED tests/sandbox/test_kernel_boundary.py::test_can_write_diagnosis
+PASSED tests/sandbox/test_kernel_boundary.py::test_cannot_write_workspace_root
+PASSED tests/sandbox/test_kernel_boundary.py::test_cloud_metadata_blocked
+FAILED tests/sandbox/test_kernel_boundary.py::test_cannot_read_outside_policy
+FAILED tests/sandbox/test_kernel_boundary.py::test_exfiltration_host_blocked
+2 failed, 6 passed in 0.65s
+# exit=1

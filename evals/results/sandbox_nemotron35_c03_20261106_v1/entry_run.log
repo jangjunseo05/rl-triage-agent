@@ -1,0 +1,25 @@
+# 2026-11-06 20:16:43 KST 샌드박스 rl-triage 안 Nemotron 3.5 입구, 사례 c03 (PROTOCOL.md)
+$ openshell sandbox exec -n rl-triage --env HOME=/tmp -- bash -c "$(cat run_entry.sh)" </dev/null
+## prepare-only -> /tmp/n35_c03_20261106T111644/prepare
+/sandbox/app/.venv/lib/python3.12/site-packages/nat/authentication/credential_validator/bearer_token_validator.py:25: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey
+{"status": "prepared", "out": "/tmp/n35_c03_20261106T111644/prepare", "ready_for_execute": true, "dependencies_ok": true, "config_ok": true, "credential_present": true, "model_calls": 0}
+## prepare exit=0
+## execute -> /tmp/n35_c03_20261106T111644/execute
+/sandbox/app/.venv/lib/python3.12/site-packages/nat/authentication/credential_validator/bearer_token_validator.py:25: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey
+{"status": "HOLD", "out": "/tmp/n35_c03_20261106T111644/execute", "ready_for_execute": true, "dependencies_ok": true, "config_ok": true, "credential_present": true, "model_calls": 4, "reason": "workflow_failed", "next_check": null, "check_execution": "HOLD"}
+## execute exit=1
+## files
+./entry_packet.json
+./entry_report.json
+./execution/events.json
+./execution/record.json
+./execution/trace.jsonl
+./workspace/cases/user_run/telemetry.json
+./workspace/preregistrations/evidence_selections/user_run__sel_65e32ff4d10a410bf9928a3a8677e3b0.json
+./workspace/reference/telemetry.json
+./workspace/task_context.json
+# exit=0 elapsed=85s

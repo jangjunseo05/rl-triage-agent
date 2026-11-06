@@ -1,0 +1,25 @@
+# 2026-11-06 20:28:10 KST 회귀 시험(별도 집계), 이미지 sha256:09c3eac1b9d566e573b6e116e9b9b482f2de94fd41654d4de7424b56205a039f
+## OpenShell
+$ openshell sandbox exec -n rl-triage -- bash -c 'cd /sandbox/app && OPENSHELL_SANDBOX=1 python -m pytest -q -p no:cacheprovider -rA tests/sandbox/test_app_code_boundary.py'
+.                                                                        [100%]
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/sandbox/test_app_code_boundary.py::test_cannot_open_agent_tool_code_for_writing
+1 passed in 0.51s
+# exit=0
+## docker(OpenShell 없음)
+$ docker run --rm --user 1001:1001 rl-triage-ws:seed42 bash -c 'cd /sandbox/app && OPENSHELL_SANDBOX=1 python -m pytest -q -p no:cacheprovider -rA tests/sandbox/test_app_code_boundary.py'
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________________ test_cannot_open_agent_tool_code_for_writing _________________
+
+    def test_cannot_open_agent_tool_code_for_writing():
+        before = _sha256(TOOL_CODE)
+>       with pytest.raises(PermissionError) as exc:
+E       Failed: DID NOT RAISE PermissionError
+
+tests/sandbox/test_app_code_boundary.py:24: Failed
+=========================== short test summary info ============================
+FAILED tests/sandbox/test_app_code_boundary.py::test_cannot_open_agent_tool_code_for_writing
+1 failed in 1.11s
+# exit=1

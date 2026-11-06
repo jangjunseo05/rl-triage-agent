@@ -1,0 +1,290 @@
+# 2026-11-06 20:22:24 KST 커밋 9f93cd8
+$ docker build -f docker/Dockerfile.sandbox -t rl-triage-sandbox:0.1 .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.sandbox
+#1 transferring dockerfile: 1.16kB 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for ghcr.io/astral-sh/uv:0.11.6
+#2 DONE 1.3s
+
+#3 [internal] load metadata for nvcr.io/nvidia/base/ubuntu:24.04
+#3 DONE 2.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 107B 0.2s
+#4 transferring context: 109B 0.2s done
+#4 DONE 0.2s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [stage-0  1/11] FROM nvcr.io/nvidia/base/ubuntu:24.04@sha256:d9461f428eea54e553add3a5158a0f245c6e1ea73efc59fff8e98e3d4a38e378
+#6 resolve nvcr.io/nvidia/base/ubuntu:24.04@sha256:d9461f428eea54e553add3a5158a0f245c6e1ea73efc59fff8e98e3d4a38e378 0.1s done
+#6 DONE 0.1s
+
+#7 FROM ghcr.io/astral-sh/uv:0.11.6@sha256:b1e699368d24c57cda93c338a57a8c5a119009ba809305cc8e86986d4a006754
+#7 resolve ghcr.io/astral-sh/uv:0.11.6@sha256:b1e699368d24c57cda93c338a57a8c5a119009ba809305cc8e86986d4a006754 0.1s done
+#7 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 14.90kB 4.9s
+#5 transferring context: 51.88kB 9.3s done
+#5 DONE 9.4s
+
+#8 [stage-0  5/11] WORKDIR /sandbox
+#8 CACHED
+
+#9 [stage-0  6/11] COPY pyproject.toml uv.lock README.md /sandbox/app/
+#9 CACHED
+
+#10 [stage-0  2/11] RUN apt-get update && apt-get install -y --no-install-recommends python3.12 python3.12-venv ca-certificates     && rm -rf /var/lib/apt/lists/*
+#10 CACHED
+
+#11 [stage-0  3/11] COPY --from=ghcr.io/astral-sh/uv:0.11.6 /uv /usr/local/bin/uv
+#11 CACHED
+
+#12 [stage-0  7/11] COPY src /sandbox/app/src
+#12 CACHED
+
+#13 [stage-0  4/11] RUN useradd -m -u 1001 -s /bin/bash sandbox
+#13 CACHED
+
+#14 [stage-0  8/11] COPY configs /sandbox/app/configs
+#14 CACHED
+
+#15 [stage-0  9/11] COPY tests /sandbox/app/tests
+#15 DONE 0.2s
+
+#16 [stage-0 10/11] COPY evals/grounded_active_model_call.py /sandbox/app/evals/grounded_active_model_call.py
+#16 DONE 0.1s
+
+#17 [stage-0 11/11] RUN cd /sandbox/app && UV_PROJECT_ENVIRONMENT=/sandbox/app/.venv UV_PYTHON_DOWNLOADS=never     uv sync --frozen --python /usr/bin/python3.12 && chmod -R a+rX /sandbox/app
+#17 0.536 Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+#17 0.536 Creating virtual environment at: .venv
+#17 0.651    Building rl-triage-agent @ file:///sandbox/app
+#17 5.718 Downloading zstandard (5.3MiB)
+#17 5.733 Downloading numpy (15.9MiB)
+#17 5.734 Downloading litellm (26.1MiB)
+#17 5.740 Downloading pandas (11.8MiB)
+#17 5.743 Downloading oci (35.3MiB)
+#17 5.792 Downloading botocore (15.2MiB)
+#17 5.812 Downloading tiktoken (1.1MiB)
+#17 5.847 Downloading pygments (1.2MiB)
+#17 5.847 Downloading openai (1.6MiB)
+#17 5.847 Downloading grpcio (6.8MiB)
+#17 5.871 Downloading uvloop (4.2MiB)
+#17 5.884 Downloading pip (1.7MiB)
+#17 5.885 Downloading sqlalchemy (4.5MiB)
+#17 5.887 Downloading pydantic-core (2.0MiB)
+#17 5.889 Downloading networkx (2.0MiB)
+#17 5.907 Downloading aiohttp (1.7MiB)
+#17 5.924 Downloading cryptography (4.5MiB)
+#17 5.925 Downloading hf-xet (4.3MiB)
+#17 5.933 Downloading tokenizers (3.2MiB)
+#17 5.935 Downloading langchain-community (2.4MiB)
+#17 27.85  Downloaded tiktoken
+#17 29.82  Downloaded pygments
+#17 33.78    Building wikipedia==1.4.0
+#17 36.68  Downloaded openai
+#17 37.91  Downloaded pip
+#17 38.13  Downloaded aiohttp
+#17 39.33  Downloaded pydantic-core
+#17 39.57  Downloaded networkx
+#17 41.66  Downloaded langchain-community
+#17 44.13       Built rl-triage-agent @ file:///sandbox/app
+#17 46.43       Built wikipedia==1.4.0
+#17 46.71  Downloaded tokenizers
+#17 52.22  Downloaded uvloop
+#17 52.45  Downloaded sqlalchemy
+#17 52.83  Downloaded hf-xet
+#17 54.55  Downloaded cryptography
+#17 56.86  Downloaded zstandard
+#17 59.41  Downloaded grpcio
+#17 70.20  Downloaded pandas
+#17 76.14  Downloaded botocore
+#17 76.63  Downloaded numpy
+#17 81.19  Downloaded litellm
+#17 87.46  Downloaded oci
+#17 87.46 Prepared 164 packages in 1m 26s
+#17 90.27 Installed 164 packages in 2.80s
+#17 90.29  + aiofiles==25.1.0
+#17 90.29  + aiohappyeyeballs==2.7.1
+#17 90.29  + aiohttp==3.14.3
+#17 90.29  + aiosignal==1.4.0
+#17 90.29  + annotated-doc==0.0.5
+#17 90.29  + annotated-types==0.8.0
+#17 90.29  + anyio==4.15.1
+#17 90.29  + attrs==26.1.0
+#17 90.29  + authlib==1.8.0
+#17 90.29  + beautifulsoup4==4.15.0
+#17 90.29  + boto3==1.43.103
+#17 90.29  + botocore==1.43.103
+#17 90.29  + cachetools==7.2.0
+#17 90.29  + certifi==2026.7.22
+#17 90.29  + cffi==2.1.1
+#17 90.29  + charset-normalizer==3.5.1
+#17 90.29  + circuitbreaker==2.1.3
+#17 90.29  + click==8.5.0
+#17 90.29  + colorama==0.4.6
+#17 90.29  + crc32c==2.8
+#17 90.29  + cryptography==48.0.1
+#17 90.29  + dataclasses-json==0.6.7
+#17 90.29  + distro==1.9.0
+#17 90.29  + exa-py==1.16.2
+#17 90.29  + expandvars==1.1.2
+#17 90.29  + fastapi==0.141.1
+#17 90.29  + fastuuid==0.14.0
+#17 90.29  + filelock==4.0.3
+#17 90.29  + frozenlist==1.8.0
+#17 90.29  + fsspec==2026.9.0
+#17 90.29  + googleapis-common-protos==1.75.4
+#17 90.29  + grpcio==1.84.0
+#17 90.29  + h11==0.16.0
+#17 90.29  + hf-xet==1.6.0
+#17 90.29  + httpcore==1.0.9
+#17 90.29  + httpcore2==2.13.1
+#17 90.29  + httptools==0.8.0
+#17 90.29  + httpx==0.28.1
+#17 90.29  + httpx-sse==0.4.3
+#17 90.29  + httpx2==2.13.1
+#17 90.29  + huggingface-hub==1.33.0
+#17 90.29  + idna==3.20
+#17 90.29  + importlib-metadata==8.9.0
+#17 90.29  + iniconfig==2.3.0
+#17 90.29  + jinja2==3.1.6
+#17 90.29  + jiter==0.17.0
+#17 90.29  + jmespath==1.1.0
+#17 90.29  + joserfc==1.7.5
+#17 90.29  + jsonpatch==1.33
+#17 90.29  + jsonpath-ng==1.8.0
+#17 90.29  + jsonpointer==3.1.1
+#17 90.29  + jsonschema==4.26.0
+#17 90.29  + jsonschema-specifications==2025.9.1
+#17 90.29  + langchain==1.4.2
+#17 90.29  + langchain-aws==1.7.9
+#17 90.29  + langchain-classic==1.0.8
+#17 90.29  + langchain-community==0.4.1
+#17 90.29  + langchain-core==1.6.5
+#17 90.29  + langchain-exa==1.1.0
+#17 90.29  + langchain-huggingface==1.2.2
+#17 90.29  + langchain-litellm==0.9.0
+#17 90.29  + langchain-milvus==0.3.3
+#17 90.29  + langchain-nvidia-ai-endpoints==1.4.3
+#17 90.29  + langchain-oci==0.3.2
+#17 90.29  + langchain-openai==1.6.6
+#17 90.29  + langchain-protocol==0.0.19
+#17 90.29  + langchain-text-splitters==1.1.2
+#17 90.29  + langgraph==1.2.12
+#17 90.29  + langgraph-checkpoint==4.2.0
+#17 90.29  + langgraph-prebuilt==1.1.0
+#17 90.29  + langgraph-sdk==0.4.5
+#17 90.29  + langsmith==0.14.1
+#17 90.29  + litellm==1.102.1
+#17 90.29  + markdown-it-py==4.2.0
+#17 90.29  + markupsafe==3.0.3
+#17 90.29  + marshmallow==3.26.2
+#17 90.29  + mdurl==0.1.2
+#17 90.29  + multidict==6.9.1
+#17 90.29  + mypy-extensions==1.1.0
+#17 90.29  + nest-asyncio2==1.7.3
+#17 90.29  + networkx==3.7
+#17 90.29  + numpy==2.5.3
+#17 90.29  + nvidia-nat==1.9.0
+#17 90.29  + nvidia-nat-atif==1.9.0
+#17 90.29  + nvidia-nat-core==1.9.0
+#17 90.29  + nvidia-nat-eval==1.9.0
+#17 90.29  + nvidia-nat-langchain==1.9.0
+#17 90.29  + nvidia-nat-opentelemetry==1.9.0
+#17 90.29  + oci==2.187.0
+#17 90.29  + oci-openai==1.1.0
+#17 90.29  + openai==2.54.0
+#17 90.29  + openevals==0.2.0
+#17 90.29  + openinference-semantic-conventions==0.1.39
+#17 90.29  + opentelemetry-api==1.45.0
+#17 90.29  + opentelemetry-exporter-http-transport==0.66b0
+#17 90.29  + opentelemetry-exporter-otlp==1.45.0
+#17 90.29  + opentelemetry-exporter-otlp-common==0.66b0
+#17 90.29  + opentelemetry-exporter-otlp-proto-common==1.45.0
+#17 90.29  + opentelemetry-exporter-otlp-proto-grpc==1.45.0
+#17 90.29  + opentelemetry-exporter-otlp-proto-http==1.45.0
+#17 90.29  + opentelemetry-proto==1.45.0
+#17 90.29  + opentelemetry-sdk==1.45.0
+#17 90.29  + opentelemetry-semantic-conventions==0.66b0
+#17 90.29  + orjson==3.12.0
+#17 90.29  + ormsgpack==1.12.2
+#17 90.29  + packaging==26.3
+#17 90.29  + pandas==2.3.3
+#17 90.29  + pip==26.2.1
+#17 90.29  + pkce==1.0.3
+#17 90.29  + pkginfo==1.13
+#17 90.29  + platformdirs==4.11.15
+#17 90.29  + pluggy==1.6.0
+#17 90.29  + propcache==0.5.4
+#17 90.29  + protobuf==7.36.2
+#17 90.29  + pycparser==3.0
+#17 90.29  + pydantic==2.13.5
+#17 90.29  + pydantic-core==2.46.5
+#17 90.29  + pydantic-settings==2.15.0
+#17 90.29  + pygments==2.21.0
+#17 90.29  + pyjwt==2.15.0
+#17 90.29  + pymilvus==2.6.9
+#17 90.29  + pyopenssl==26.2.0
+#17 90.29  + pytest==9.1.1
+#17 90.29  + python-dateutil==2.9.0.post0
+#17 90.29  + python-dotenv==1.2.3
+#17 90.29  + python-multipart==0.0.32
+#17 90.29  + pytz==2026.4
+#17 90.29  + pyyaml==6.0.3
+#17 90.29  + referencing==0.37.0
+#17 90.29  + regex==2026.9.10
+#17 90.29  + requests==2.34.2
+#17 90.29  + requests-toolbelt==1.0.0
+#17 90.29  + rich==14.3.4
+#17 90.29  + rl-triage-agent==0.1.0 (from file:///sandbox/app)
+#17 90.29  + rpds-py==2026.6.3
+#17 90.29  + s3transfer==0.19.2
+#17 90.29  + setuptools==84.0.0
+#17 90.29  + six==1.17.0
+#17 90.29  + sniffio==1.3.1
+#17 90.29  + soupsieve==2.10
+#17 90.29  + sqlalchemy==2.1.1
+#17 90.29  + starlette==1.7.0
+#17 90.29  + tabulate==0.10.0
+#17 90.29  + tenacity==9.1.4
+#17 90.29  + tiktoken==0.14.0
+#17 90.29  + tokenizers==0.23.2
+#17 90.29  + tqdm==4.70.1
+#17 90.29  + truststore==0.10.4
+#17 90.29  + typing-extensions==4.16.0
+#17 90.29  + typing-inspect==0.9.0
+#17 90.29  + typing-inspection==0.4.4
+#17 90.29  + tzdata==2026.4
+#17 90.29  + tzlocal==5.4.4
+#17 90.29  + urllib3==2.8.0
+#17 90.29  + uuid-utils==0.17.1
+#17 90.29  + uvicorn==0.54.0
+#17 90.29  + uvloop==0.22.1
+#17 90.29  + watchfiles==1.3.0
+#17 90.29  + websockets==16.1.1
+#17 90.29  + wikipedia==1.4.0
+#17 90.29  + xxhash==4.0.1
+#17 90.29  + yarl==1.25.1
+#17 90.29  + zipp==4.1.0
+#17 90.29  + zstandard==0.25.0
+#17 DONE 102.8s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 94.7s done
+#18 exporting manifest sha256:dc9f259dc668c21a990adb001229a61fe9a5bd27d46498b90c01eebecd497e23 0.1s done
+#18 exporting config sha256:8c24515978cc2b982bd57c74bb051ae25409f0912808218f07d922393a9b1e99 0.1s done
+#18 exporting attestation manifest sha256:c25e1d6ad1cf0b63d60d40c37f4c7a1d89752391162c94f471e7569b4b13fc49 0.1s done
+#18 exporting manifest list sha256:3f961bc006dd4b26644464a3d8ec91b98218585eb66d206bf844ff0663bce34e
+#18 exporting manifest list sha256:3f961bc006dd4b26644464a3d8ec91b98218585eb66d206bf844ff0663bce34e 0.0s done
+#18 naming to docker.io/library/rl-triage-sandbox:0.1 done
+#18 unpacking to docker.io/library/rl-triage-sandbox:0.1
+#18 unpacking to docker.io/library/rl-triage-sandbox:0.1 78.3s done
+#18 DONE 173.4s
+exit=0 elapsed=293s
